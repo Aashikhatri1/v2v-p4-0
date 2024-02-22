@@ -157,7 +157,7 @@ query = 'I have some issues with payment'
 category =['{"Category": "Billing"}']
 info = response_type(query, category)
 
-print(info)
+# print(info)
 
 answer = streaming_audio.final_answer(info, chat_history, query)
-print(answer)
+# print(answer)
