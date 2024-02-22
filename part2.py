@@ -1,6 +1,8 @@
 # mix
 
 import json
+import soundfile as sf
+import sounddevice as sd
 
 # Path to your JSON file
 filename = 'data.json'
@@ -119,12 +121,19 @@ def final_sub_sub_category(sub_category, query):
 def response_type(query, category):
     FAQ = '{"Category": "FAQs"}'
 
+    filename = 'letmecheck.wav'  # Replace with the path to your audio file
+    d, fs = sf.read(filename)
+
+    
     # Check if the pattern is in the string
     if FAQ in category:
         print("yes")     ## run faiss code
         # get_faiss_response(query)
     else:
         print("no")   # run fetch data.py
+        #Play the audio file
+        sd.play(d, fs)
+        # sd.wait() 
         sub_category = fetch_sub_category(category)
         print('sub_category:', sub_category)
         # info = find_information(data, sub_category)
